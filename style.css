@@ -1,0 +1,109 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+img{
+    width: 100%;
+    height: auto;
+}
+
+body{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    align-items: center;
+   
+}
+header{
+    height: 30vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    
+}
+#headerImg{
+    width: 150px;
+    margin: -20px;
+}
+
+#text{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center
+
+}
+
+
+main{
+    width: fit-content;
+    height: 70vh; 
+    display: flex;
+    flex-direction: row;
+}
+
+article{
+    display: flex;
+    flex-direction: column;
+    width: 56vw; 
+}
+
+section{
+    background-color: lightblue;
+    height: 100%;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+aside{
+    background-color: lightpink;
+    background-image: url(bilder/flappy.jpg);
+    height: 100%;
+    width: 24vw;
+    margin-left: 20px;   
+    margin-bottom: 10px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    
+}
+aside, h3{
+    color: white;
+    text-shadow: 2px;
+}
+
+section, aside {
+    border-radius: 20px;
+    padding: 20px;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+section:hover{
+    height: 900px;
+    transition: 1s;
+    
+}  
+
+#history >p{
+    display: none;
+
+}
+#history:hover >img{
+    display: none;
+    transition: 1s;
+
+}
+#history:hover >p{
+    display:block;
+}
