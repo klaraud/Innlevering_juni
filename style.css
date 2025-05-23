@@ -45,7 +45,7 @@ header {
 
 main {
     width: fit-content;
-    height: 70vh;
+    min-height: 120vh;
     display: flex;
     flex-direction: row;
 }
@@ -137,4 +137,12 @@ section:hover>p {
 section, h2{
     text-align: center;
     
+}
+
+
+canvas{
+    
+    border: 2px solid black;
+    background-color: lightblue;
+
 }
