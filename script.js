@@ -24,18 +24,34 @@ const fuglbilde = new Image()
 fuglbilde.src = "bilder/flappybird.png"
 
 
-// 
 
 const fugl = {
-    x: 150,
+    x: 200,
     y: HEIGHT/2,
     radius: 100,
     vy: 0
+    
+}
+// Tårn
+
+const towerImg = new Image()
+towerImg.src = "bilder/tower.jpg"
+
+const start =[0, HEIGHT]
+
+const tower={
+    width : 50,
+    x: 0,
+    y: Math.floor(Math.random()*start)
 
 }
 
 function tegnFugl() {
     ctx.drawImage(fuglbilde, fugl.x, fugl.y, fugl.radius, fugl.radius)
+}
+
+function tegnTower(){
+    ctx.drawImage(towerImg, tower.x,tower.y)
 }
 
 function hopp() {
