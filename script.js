@@ -27,10 +27,10 @@ fuglbilde.src = "bilder/flappybird.png"
 
 const fugl = {
     x: 200,
-    y: HEIGHT/2,
+    y: HEIGHT / 2,
     radius: 100,
     vy: 0
-    
+
 }
 // Tårn
 
@@ -38,7 +38,7 @@ const towerImg = new Image()
 towerImg.src = "bilder/tower.jpg"
 
 // høyden på åpningen mellom tårnene
-const HOLE_HEIGHT = 200 
+const HOLE_HEIGHT = 200
 
 const tower = {
     width: 100,
@@ -51,7 +51,7 @@ towerImg.onload = () => {
     oppdaterAlt() // Start først når bildet er klart
 }
 
-const start =[0, HEIGHT]
+const start = [0, HEIGHT]
 
 
 
@@ -72,10 +72,10 @@ function tegnTower() {
 
 
 function hopp() {
-    fugl.vy = -15
+    fugl.vy = -10
 }
 
-function oppdaterFugl(){
+function oppdaterFugl() {
     fugl.vy += GRAVITASJON
     fugl.y += fugl.vy
 }
@@ -90,6 +90,28 @@ function oppdaterTower() {
     }
 }
 
+
+
+function sjekkKollisjon() {
+    const bottomY = tower.topHeight + HOLE_HEIGHT
+
+    // Fuglen utenfor skjermen
+    if (fugl.y + fugl.radius > HEIGHT || fugl.y < 0) {
+        return true
+    }
+
+    // Fuglen treffer tårnene horisontalt
+    if (fugl.x + fugl.radius > tower.x && fugl.x < tower.x + tower.width) {
+        // Treffer øvre eller nedre tårn vertikalt
+        if (fugl.y < tower.topHeight ||fugl.y + fugl.radius > bottomY) {
+            return true
+        }
+    }
+
+    return false
+}
+
+
 // Funksjon som tømmer canvas:
 function clearCanvas() {
     // ctx.clearRect(0, 0, WIDTH, HEIGHT)
@@ -97,6 +119,11 @@ function clearCanvas() {
     ctx.rect(0, 0, WIDTH, HEIGHT)
     ctx.fillStyle = "lightblue"
     ctx.fill()
+}
+
+function spillslutt(){
+    const btn = document.querySelector("button")
+    btn.style.display = "block"
 }
 
 
@@ -107,6 +134,9 @@ function oppdaterAlt() {
     tegnFugl()
     tegnTower()
     oppdaterTower()
+    if (sjekkKollisjon()){
+        spillSlutt()
+    }
 
 
 
