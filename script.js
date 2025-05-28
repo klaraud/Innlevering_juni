@@ -37,26 +37,39 @@ const fugl = {
 const towerImg = new Image()
 towerImg.src = "bilder/tower.jpg"
 
+// høyden på åpningen mellom tårnene
+const HOLE_HEIGHT = 200 
+
+const tower = {
+    width: 100,
+    x: WIDTH, // start utenfor høyre kant
+    topHeight: Math.floor(Math.random() * (HEIGHT - HOLE_HEIGHT - 100)),
+    speed: 2
+}
+
 towerImg.onload = () => {
-    oppdaterAlt(); // Start først når bildet er klart
+    oppdaterAlt() // Start først når bildet er klart
 }
 
 const start =[0, HEIGHT]
 
-const tower={
-    width : 50,
-    x: 0,
-    y: Math.floor(Math.random() * HEIGHT)
 
-}
 
 function tegnFugl() {
     ctx.drawImage(fuglbilde, fugl.x, fugl.y, fugl.radius, fugl.radius)
 }
 
-function tegnTower(){
-    ctx.drawImage(towerImg, tower.x,tower.y)
+
+function tegnTower() {
+    // Øverste tårn
+    ctx.drawImage(towerImg, tower.x, 0, tower.width, tower.topHeight)
+
+    // Nederste tårn
+    const bottomY = tower.topHeight + HOLE_HEIGHT
+    const bottomHeight = HEIGHT - bottomY
+    ctx.drawImage(towerImg, tower.x, bottomY, tower.width, bottomHeight)
 }
+
 
 function hopp() {
     fugl.vy = -15
@@ -65,6 +78,16 @@ function hopp() {
 function oppdaterFugl(){
     fugl.vy += GRAVITASJON
     fugl.y += fugl.vy
+}
+
+function oppdaterTower() {
+    tower.x -= tower.speed
+
+    // Når tårnet er ute av skjermen, resett det til høyre igjen med ny høyde
+    if (tower.x + tower.width < 0) {
+        tower.x = WIDTH
+        tower.topHeight = Math.floor(Math.random() * (HEIGHT - HOLE_HEIGHT - 100))
+    }
 }
 
 // Funksjon som tømmer canvas:
@@ -83,6 +106,7 @@ function oppdaterAlt() {
     oppdaterFugl()
     tegnFugl()
     tegnTower()
+    oppdaterTower()
 
 
 
