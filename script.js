@@ -37,12 +37,16 @@ const fugl = {
 const towerImg = new Image()
 towerImg.src = "bilder/tower.jpg"
 
+towerImg.onload = () => {
+    oppdaterAlt(); // Start først når bildet er klart
+}
+
 const start =[0, HEIGHT]
 
 const tower={
     width : 50,
     x: 0,
-    y: Math.floor(Math.random()*start)
+    y: Math.floor(Math.random() * HEIGHT)
 
 }
 
@@ -78,6 +82,7 @@ function oppdaterAlt() {
     clearCanvas()
     oppdaterFugl()
     tegnFugl()
+    tegnTower()
 
 
 
