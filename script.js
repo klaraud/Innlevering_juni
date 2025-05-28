@@ -121,11 +121,19 @@ function clearCanvas() {
     ctx.fill()
 }
 
-function spillslutt(){
-    const btn = document.querySelector("button")
-    btn.style.display = "block"
+const restartBtn = document.querySelector("button")
+function spillSlutt(){
+    restartBtn.style.display = "block"
+
 }
 
+
+//  Laster siden på nytt
+restartBtn.addEventListener("click", () => {
+    location.reload() 
+})
+
+let animasjonID //global variabl 
 
 // Funksjon som oppdaterer alt:
 function oppdaterAlt() {
@@ -136,12 +144,14 @@ function oppdaterAlt() {
     oppdaterTower()
     if (sjekkKollisjon()){
         spillSlutt()
+        cancelAnimationFrame(animasjonID)
+        return
     }
-
-
-
+    
+    
+    
     // Tegn neste frame:
-    requestAnimationFrame(oppdaterAlt)
+    animasjonID = requestAnimationFrame(oppdaterAlt)
 }
 
 // Start animasjonen:
