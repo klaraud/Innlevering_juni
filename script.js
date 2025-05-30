@@ -17,7 +17,7 @@ const ctx = canvas.getContext("2d")
 
 
 // konstant tyngdefart
-let GRAVITASJON = 0.5
+let GRAVITASJON = 0.3
 
 //Fugl
 const fuglbilde = new Image()
@@ -27,8 +27,8 @@ fuglbilde.src = "bilder/flappybird.png"
 
 const fugl = {
     x: 200,
-    y: HEIGHT / 2,
-    radius: 100,
+    y: HEIGHT / 4,
+    radius: 60,
     vy: 0
 
 }
@@ -36,6 +36,9 @@ const fugl = {
 
 const towerImg = new Image()
 towerImg.src = "bilder/tower.jpg"
+
+const towerImg2 = new Image()
+towerImg2.src = "bilder/tower2.jpg"
 
 // høyden på åpningen mellom tårnene
 const HOLE_HEIGHT = 200
@@ -47,7 +50,7 @@ const tower = {
     speed: 2
 }
 
-towerImg.onload = () => {
+towerImg2.onload = () => {
     oppdaterAlt() // Start først når bildet er klart
 }
 
@@ -62,7 +65,7 @@ function tegnFugl() {
 
 function tegnTower() {
     // Øverste tårn
-    ctx.drawImage(towerImg, tower.x, 0, tower.width, tower.topHeight)
+    ctx.drawImage(towerImg2, tower.x, 0, tower.width, tower.topHeight)
 
     // Nederste tårn
     const bottomY = tower.topHeight + HOLE_HEIGHT
@@ -72,7 +75,7 @@ function tegnTower() {
 
 
 function hopp() {
-    fugl.vy = -10
+    fugl.vy = -7
 }
 
 function oppdaterFugl() {
