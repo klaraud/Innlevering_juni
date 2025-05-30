@@ -5,7 +5,8 @@ const HEIGHT = document.body.offsetHeight - 4
 const WIDTH = document.body.offsetWidth - 4
 
 
-
+let poeng = 0
+const poengElm = document.getElementById("poeng")
 
 // const WIDTH = 400
 // const HEIGHT = 400
@@ -21,14 +22,15 @@ let GRAVITASJON = 0.3
 
 //Fugl
 const fuglbilde = new Image()
-fuglbilde.src = "bilder/flappybird.png"
+fuglbilde.src = "bilder/flappybird2.png"
 
 
 
 const fugl = {
     x: 200,
     y: HEIGHT / 4,
-    radius: 60,
+    width: 60,
+    height: 40,
     vy: 0
 
 }
@@ -59,7 +61,7 @@ const start = [0, HEIGHT]
 
 
 function tegnFugl() {
-    ctx.drawImage(fuglbilde, fugl.x, fugl.y, fugl.radius, fugl.radius)
+    ctx.drawImage(fuglbilde, fugl.x, fugl.y, fugl.width, fugl.height)
 }
 
 
@@ -90,23 +92,28 @@ function oppdaterTower() {
     if (tower.x + tower.width < 0) {
         tower.x = WIDTH
         tower.topHeight = Math.floor(Math.random() * (HEIGHT - HOLE_HEIGHT - 100))
+        oppdaterPoeng()
     }
 }
+function oppdaterPoeng(){
+    poeng += 1
+    poengElm.innerHTML = poeng
 
+}
 
 
 function sjekkKollisjon() {
     const bottomY = tower.topHeight + HOLE_HEIGHT
 
     // Fuglen utenfor skjermen
-    if (fugl.y + fugl.radius > HEIGHT || fugl.y < 0) {
+    if (fugl.y - fugl.height > HEIGHT || fugl.y +fugl.height < 0) {
         return true
     }
 
     // Fuglen treffer tårnene horisontalt
-    if (fugl.x + fugl.radius > tower.x && fugl.x < tower.x + tower.width) {
+    if (fugl.x + fugl.width > tower.x && fugl.x < tower.x + tower.width) {
         // Treffer øvre eller nedre tårn vertikalt
-        if (fugl.y < tower.topHeight ||fugl.y + fugl.radius > bottomY) {
+        if (fugl.y < tower.topHeight ||fugl.y + fugl.height > bottomY) {
             return true
         }
     }
@@ -131,6 +138,7 @@ function spillSlutt(){
 }
 
 
+
 //  Laster siden på nytt
 restartBtn.addEventListener("click", () => {
     location.reload() 
@@ -144,6 +152,7 @@ function oppdaterAlt() {
     oppdaterFugl()
     tegnFugl()
     tegnTower()
+   
     oppdaterTower()
     if (sjekkKollisjon()){
         spillSlutt()

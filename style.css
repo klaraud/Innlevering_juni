@@ -159,3 +159,17 @@ button{
     z-index: 9;
     top: 40%;
 }
+
+#poengDiv{
+    position: fixed;
+    z-index: 9;
+    left: 85%;
+    padding: 20px 40px;
+    background-color: rgb(135, 192, 135);
+    border: 2px solid;
+
+}
+
+span{
+    color: red;
+}
