@@ -173,3 +173,15 @@ button{
 span{
     color: red;
 }
+
+.tilbake{
+    position: fixed;
+    z-index: 9;
+    right: 92%;
+    padding: 10px 10px;
+    top: 0%;
+    background-color: aliceblue;
+    border: 2px solid black;
+    
+    
+}
