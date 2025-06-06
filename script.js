@@ -24,6 +24,13 @@ let GRAVITASJON = 0.3
 const fuglbilde = new Image()
 fuglbilde.src = "bilder/flappybird2.png"
 
+const fuglOpp = new Image()
+fuglOpp.src = "bilder/fuglOpp2.png"
+
+const fuglNed = new Image()
+fuglNed.src = "bilder/fuglNed4.png"
+
+
 
 
 const fugl = {
@@ -61,7 +68,14 @@ const start = [0, HEIGHT]
 
 
 function tegnFugl() {
-    ctx.drawImage(fuglbilde, fugl.x, fugl.y, fugl.width, fugl.height)
+    if(fugl.vy>1) {
+        ctx.drawImage(fuglNed, fugl.x, fugl.y, fugl.width, fugl.height)
+    }else if(fugl.vy<-1){
+        ctx.drawImage(fuglOpp, fugl.x, fugl.y, fugl.width, fugl.height)
+    } else {
+        ctx.drawImage(fuglbilde, fugl.x, fugl.y, fugl.width, fugl.height)   
+    }
+
 }
 
 

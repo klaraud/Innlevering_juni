@@ -1,7 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=WDXL+Lubrifont+TC&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "WDXL Lubrifont TC", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+
 }
 
 img {
@@ -61,6 +67,10 @@ section {
     height: 100%;
     width: 100%;
     margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 aside {
@@ -81,6 +91,7 @@ aside,
 h3 {
     color: white;
     position: relative;
+    font-size: xx-large;
 }
 
 section,
@@ -120,7 +131,7 @@ section>p {
 
 }
 
-#img{
+#img {
     height: 200px;
 }
 
@@ -134,20 +145,21 @@ section:hover>p {
     display: block;
 }
 
-section, h2{
+section,
+h2 {
     text-align: center;
-    
+
 }
 
 
-canvas{
-    
+canvas {
+
     border: 2px solid black;
     background-color: lightblue;
 
 }
 
-button{
+button {
     display: none;
     padding: 60px 100px;
     font-size: 40px;
@@ -160,7 +172,7 @@ button{
     top: 40%;
 }
 
-#poengDiv{
+#poengDiv {
     position: fixed;
     z-index: 9;
     left: 85%;
@@ -170,11 +182,11 @@ button{
 
 }
 
-span{
+span {
     color: red;
 }
 
-.tilbake{
+.tilbake {
     position: fixed;
     z-index: 9;
     right: 92%;
@@ -182,6 +194,6 @@ span{
     top: 0%;
     background-color: aliceblue;
     border: 2px solid black;
-    
-    
+
+
 }
